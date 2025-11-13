@@ -17,26 +17,26 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FunctionConfigurationComponent} from '@valtimo/plugin';
 import {BehaviorSubject, combineLatest, Observable, Subscription, take} from 'rxjs';
-import {SendSmsConfig} from '../../models';
+import {SendLetterConfig} from '../../models';
 import {FunctionConfigurationData} from "@valtimo/plugin/lib/models/plugin";
 
 @Component({
-  selector: 'valtimo-send-sms-configuration',
-  templateUrl: './send-sms-configuration.component.html',
-  styleUrls: ['./send-sms-configuration.component.scss'],
+  selector: 'valtimo-send-letter-configuration',
+  templateUrl: './send-letter-configuration.component.html',
+  styleUrls: ['./send-letter-configuration.component.scss'],
 })
-export class SendSmsConfigurationComponent
+export class SendLetterConfigurationComponent
   implements FunctionConfigurationComponent, OnInit, OnDestroy
 {
   @Input() save$!: Observable<void>;
   @Input() disabled$!: Observable<boolean>;
   @Input() pluginId!: string;
-  @Input() prefillConfiguration$!: Observable<SendSmsConfig>;
+  @Input() prefillConfiguration$!: Observable<SendLetterConfig>;
   @Output() valid: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() configuration: EventEmitter<FunctionConfigurationData> = new EventEmitter<FunctionConfigurationData>();
 
   private saveSubscription!: Subscription;
-  private readonly formValue$ = new BehaviorSubject<SendSmsConfig | null>(null);
+  private readonly formValue$ = new BehaviorSubject<SendLetterConfig | null>(null);
   private readonly valid$ = new BehaviorSubject<boolean>(false);
 
   ngOnInit(): void {
@@ -47,13 +47,13 @@ export class SendSmsConfigurationComponent
     this.saveSubscription?.unsubscribe();
   }
 
-  formValueChange(formValue: SendSmsConfig): void {
+  formValueChange(formValue: SendLetterConfig): void {
     this.formValue$.next(formValue);
     this.handleValid(formValue);
   }
 
-  private handleValid(formValue: SendSmsConfig): void {
-    const valid = !!(formValue.phoneNumber && formValue.templateId);
+  private handleValid(formValue: SendLetterConfig): void {
+    const valid = !!(formValue.templateId && formValue.address);
 
     this.valid$.next(valid);
     this.valid.emit(valid);

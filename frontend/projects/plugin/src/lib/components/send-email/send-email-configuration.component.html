@@ -22,13 +22,13 @@
   } as obs"
 >
   <v-input
-    name="phoneNumber"
-    [title]="'phoneNumber' | pluginTranslate: pluginId | async"
+    name="emailAddress"
+    [title]="'emailAddress' | pluginTranslate: pluginId | async"
     [margin]="true"
-    [defaultValue]="obs.prefill?.phoneNumber"
+    [defaultValue]="obs.prefill?.emailAddress"
     [disabled]="obs.disabled"
     [required]="true"
-    [tooltip]="'phoneNumberTooltip' | pluginTranslate: pluginId | async"
+    [tooltip]="'emailAddressTooltip' | pluginTranslate: pluginId | async"
   ></v-input>
   <v-input
     name="templateId"
@@ -67,12 +67,12 @@
     [tooltip]="'referenceTooltip' | pluginTranslate: pluginId | async"
   ></v-input>
   <v-input
-    name="senderId"
-    [title]="'senderId' | pluginTranslate: pluginId | async"
+    name="replyToId"
+    [title]="'replyToId' | pluginTranslate: pluginId | async"
     [margin]="true"
-    [defaultValue]="obs.prefill?.senderId"
+    [defaultValue]="obs.prefill?.replyToId"
     [disabled]="obs.disabled"
     [required]="true"
-    [tooltip]="'senderIdTooltip' | pluginTranslate: pluginId | async"
+    [tooltip]="'replyToIdTooltip' | pluginTranslate: pluginId | async"
   ></v-input>
 </v-form>
