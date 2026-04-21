@@ -1,5 +1,5 @@
 /*
- * Copyright 2026 Ritense BV, the Netherlands.
+ * Copyright 2015-2025 Ritense BV, the Netherlands.
  *
  * Licensed under EUPL, Version 1.2 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,16 @@
  */
 
 /*
- * Public API Surface of sample-plugin
+ * Public API Surface of NotifyNL
  */
 
-export * from "./lib/plugins/sample-plugin/models";
-export * from "./lib/plugins/sample-plugin/sample-plugin-module";
-export * from "./lib/plugins/sample-plugin/sample-plugin.specification";
-export * from "./lib/plugins/sample-plugin/components/sample-plugin-configuration/sample-plugin-configuration.component";
-export * from "./lib/plugins/sample-plugin/components/sample-action-configuration/sample-action-configuration.component";
+export * from './lib/models';
+export * from './lib/notify-nl-plugin-module';
+export * from './lib/notify-nl-plugin.specification';
+export * from './lib/components/send-sms/send-sms-configuration.component';
+export * from './lib/components/send-email/send-email-configuration.component';
+export * from './lib/components/get-message/get-message-configuration.component';
+export * from './lib/components/get-template/get-template-configuration.component';
+export * from './lib/components/send-letter/send-letter-configuration.component';
+export * from './lib/components/get-all-templates/get-all-templates-configuration.component';
+export * from './lib/components/notify-nl-configuration/notify-nl-configuration.component';
