@@ -1,71 +1,54 @@
-# Plugin Documentation
+# NotifyNL plugin
 
-<!-- Use this page to document your plugin. Below is a suggested structure. -->
+The NotifyNL plugin integrates the NotifyNL service into Valtimo, allowing users to send e-mails and SMS or physical letters directly from a Valtimo process.
 
-## Overview
+## Capabilities
 
-This is a sample plugin demonstrating an API call action. It fetches data from a time API endpoint.
+This plugin has six actions:
 
-## Dependencies
+1. Send E-mail: Send an email via NotifyNL
+2. Send SMS: Send an SMS via NotifyNL
+3. Send Letter: Send a physical letter to someone's address
+4. Get Template: Retrieves a template by ID
+5. Get All Templates: Retrieves all templates or filter a specific type
+6. Get Message: Retrieves a message by ID found in the NotifyNL admin panel
 
-### Backend
+---
 
-```kotlin
-dependencies {
-    implementation("com.ritense.valtimoplugins:sample-plugin:0.0.1")
-}
-```
+# Plugin Setup Guide
 
-### Frontend
+Follow these steps to set up the plugin properly:
 
-```json
-{
-  "dependencies": {
-    "@valtimo-plugins/sample-plugin": "0.0.1"
-  }
-}
-```
+### Step 1: Create a NotifyNL Account
 
-In your `app.module.ts`:
+Go to [NotifyNL Website](https://admin.notifynl.nl/) and create an account and log in.
 
-```typescript
-import {
-    SamplePluginModule, samplePluginSpecification,
-} from '@valtimo-plugins/sample-plugin';
+### Step 2: Generate an API Token
 
-@NgModule({
-    imports: [
-        SamplePluginModule,
-    ],
-    providers: [
-        {
-            provide: PLUGIN_TOKEN,
-            useValue: [
-                samplePluginSpecification,
-            ]
-        }
-    ]
-})
-```
+1. Go to your **API Integration**.
+2. Click on the **API Keys** tab.
+3. Click on the **Create an API key** button.
+4. Give your token a **name**.
+5. Set a **key type**.
+6. Click **Continue** to create your token.
 
-## Configuration
+> **Important:** Copy the token and store it safely. You won't be able to see it again.
 
-List the plugin configuration properties and how to set them.
+---
 
-| Property | Type   | Required | Description                          |
-|----------|--------|----------|--------------------------------------|
-| apiUrl   | string | Yes      | The URL of the time API to call      |
+### Step 3: Configure in Valtimo
 
-## Actions
+1. Go to **Valtimo** and open the **Plugins** tab.
+2. Search for the **NotifyNL Plugin** and click on it.
+3. Paste the token into the API key field.
+4. Click **Save** to store your configuration.
 
-### Time API test action
+---
 
-Sends a GET request to the configured API URL and returns the timezone response.
+### Step 4: Start Using the Plugin
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-|           |      |          |             |
-
-## Usage
-
-Explain how to use the plugin in a process, with examples if applicable.
+1. Go to the **NotifyNL Case** under the tab **cases**.
+2. Start a new **case**.
+3. Select the **process** you want to start.
+4. Fill in the **recipient** you want to message.
+5. Click **Submit** to send your message to the recipient.
