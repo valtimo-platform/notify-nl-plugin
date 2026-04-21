@@ -29,7 +29,7 @@
             "@src/*": [
                 "src/*"
             ],
-            "@valtimo-plugins/sample-plugin": [
+            "@valtimo-plugins/notify-nl": [
                 "projects/plugin/src/public_api.ts"
             ]
         }
