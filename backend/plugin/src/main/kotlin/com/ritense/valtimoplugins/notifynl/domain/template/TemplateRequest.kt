@@ -27,4 +27,3 @@ data class AllTemplatesRequest(
     @JsonProperty("template_type")
     val templateType: String,
 )
-

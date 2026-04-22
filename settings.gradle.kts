@@ -1,4 +1,4 @@
-rootProject.name = "valtimo-plugin-template"
+rootProject.name = "notify-nl-plugin"
 include(
     "backend",
     "backend:app",

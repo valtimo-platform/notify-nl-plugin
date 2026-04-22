@@ -26,18 +26,18 @@ data class LetterResponse(
     val uri: String,
     val template: Template,
     @JsonProperty("scheduled_for")
-    val scheduledFor: String?
+    val scheduledFor: String?,
 ) : Serializable
 
 data class Content(
     val subject: String,
-    val body: String
+    val body: String,
 ) : Serializable
 
 data class Template(
     val id: String,
     val version: Int,
-    val uri: String
+    val uri: String,
 ) : Serializable
 
 data class LetterResponseFlat(
@@ -49,11 +49,11 @@ data class LetterResponseFlat(
     val contentBody: String?,
     val templateId: String?,
     val templateUri: String?,
-    val templateVersion: Int?
+    val templateVersion: Int?,
 ) : Serializable {
     companion object {
-        fun from(original: LetterResponse): LetterResponseFlat {
-            return LetterResponseFlat(
+        fun from(original: LetterResponse): LetterResponseFlat =
+            LetterResponseFlat(
                 id = original.id,
                 reference = original.reference,
                 uri = original.uri,
@@ -62,8 +62,7 @@ data class LetterResponseFlat(
                 contentBody = original.content.body,
                 templateId = original.template.id,
                 templateUri = original.template.uri,
-                templateVersion = original.template.version
+                templateVersion = original.template.version,
             )
-        }
     }
 }

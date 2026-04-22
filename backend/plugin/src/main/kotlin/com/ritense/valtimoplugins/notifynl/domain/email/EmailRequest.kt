@@ -28,5 +28,5 @@ data class EmailRequest(
     val personalisation: Map<String, String>? = null,
     val reference: String? = null,
     @JsonProperty("email_reply_to_id")
-    val replyToId: String? = null
+    val replyToId: String? = null,
 )

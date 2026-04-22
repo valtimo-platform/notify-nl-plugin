@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 data class LetterRequest(
     @JsonProperty("template_id")
     val templateId: String,
-    val personalisation: Personalisation
+    val personalisation: Personalisation,
 )
 
 data class Personalisation(
@@ -38,5 +38,5 @@ data class Personalisation(
     @JsonProperty("address_line_6")
     val addressLine6: String?,
     @JsonProperty("address_line_7")
-    val addressLine7: String?
+    val addressLine7: String?,
 )

@@ -16,10 +16,9 @@
 
 package com.ritense.valtimoplugins.notifynl.service
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
-import io.github.oshai.kotlinlogging.KotlinLogging
-import java.nio.charset.Charset
 import java.util.Date
 import java.util.UUID
 
@@ -30,13 +29,15 @@ class NotifyNlTokenGenerationService {
         logger.debug { "Generating a token for a request to NotifyNL" }
 
         // The given api key consists of two parts, but the API expects them to be separated.
-        val seperateKeyRegex = Regex(
-            """^[^-]+-([0-9a-fA-F-]{36})-([0-9a-fA-F-]{36})$""",
-            RegexOption.IGNORE_CASE
-        )
+        val seperateKeyRegex =
+            Regex(
+                """^[^-]+-([0-9a-fA-F-]{36})-([0-9a-fA-F-]{36})$""",
+                RegexOption.IGNORE_CASE,
+            )
 
-        val match = seperateKeyRegex.matchEntire(apiKey)
-            ?: throw IllegalArgumentException("Invalid API key format: $apiKey")
+        val match =
+            seperateKeyRegex.matchEntire(apiKey)
+                ?: throw IllegalArgumentException("Invalid API key format: $apiKey")
 
         val (serviceIdStr, secretKeyStr) = match.destructured
 
@@ -45,7 +46,8 @@ class NotifyNlTokenGenerationService {
 
         val signingKey = Keys.hmacShaKeyFor(secretKey.toString().toByteArray(Charsets.UTF_8))
 
-        return Jwts.builder()
+        return Jwts
+            .builder()
             .issuer(serviceId.toString())
             .issuedAt(Date())
             .signWith(signingKey)

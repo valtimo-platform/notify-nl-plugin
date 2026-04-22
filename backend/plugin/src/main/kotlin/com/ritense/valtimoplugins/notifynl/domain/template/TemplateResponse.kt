@@ -33,10 +33,9 @@ data class TemplateResponse(
     val subject: String?,
     val body: String,
     @JsonProperty("letter_contact_block")
-    val letterContactBlock: String?
+    val letterContactBlock: String?,
 ) : Serializable
 
 data class AllTemplatesResponse(
-    val templates: List<TemplateResponse>
+    val templates: List<TemplateResponse>,
 ) : Serializable
-

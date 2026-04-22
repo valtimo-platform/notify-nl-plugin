@@ -28,7 +28,7 @@ data class SmsRequest(
     val personalisation: Map<String, String>? = null,
     val reference: String? = null,
     @JsonProperty("sms_sender_id")
-    val senderId: String? = null
+    val senderId: String? = null,
 )
 
 data class NotificationRequest(

@@ -26,19 +26,19 @@ data class SmsResponse(
     @JsonProperty("scheduled_for")
     val scheduledFor: String?,
     val template: SmsTemplate,
-    val uri: String
+    val uri: String,
 ) : Serializable
 
 data class SmsContent(
     val body: String,
     @JsonProperty("from_number")
-    val fromNumber: String
+    val fromNumber: String,
 ) : Serializable
 
 data class SmsTemplate(
     val id: String,
     val uri: String,
-    val version: Int
+    val version: Int,
 ) : Serializable
 
 data class MessageResponse(
@@ -85,13 +85,13 @@ data class MessageResponse(
     @JsonProperty("cost_in_pounds")
     val costInPounds: Double?,
     @JsonProperty("cost_details")
-    val costDetails: CostDetails?
+    val costDetails: CostDetails?,
 ) : Serializable
 
 data class NotificationTemplate(
     val id: String,
     val uri: String,
-    val version: Int
+    val version: Int,
 ) : Serializable
 
 data class CostDetails(
@@ -103,7 +103,7 @@ data class CostDetails(
     val smsRate: Double?,
     @JsonProperty("billable_sheets_of_paper")
     val billableSheetsOfPaper: Int?,
-    val postage: String?
+    val postage: String?,
 ) : Serializable
 
 data class SmsResponseFlat(
@@ -115,11 +115,11 @@ data class SmsResponseFlat(
     val contentFromNumber: String?,
     val templateId: String?,
     val templateUri: String?,
-    val templateVersion: Int?
+    val templateVersion: Int?,
 ) : Serializable {
     companion object {
-        fun from(original: SmsResponse): SmsResponseFlat {
-            return SmsResponseFlat(
+        fun from(original: SmsResponse): SmsResponseFlat =
+            SmsResponseFlat(
                 id = original.id,
                 reference = original.reference,
                 scheduledFor = original.scheduledFor,
@@ -128,9 +128,8 @@ data class SmsResponseFlat(
                 contentFromNumber = original.content.fromNumber,
                 templateId = original.template.id,
                 templateUri = original.template.uri,
-                templateVersion = original.template.version
+                templateVersion = original.template.version,
             )
-        }
     }
 }
 
@@ -166,11 +165,11 @@ data class MessageResponseFlat(
     val costDetailsInternationalRateMultiplier: Int?,
     val costDetailsSmsRate: Double?,
     val costDetailsBillableSheetsOfPaper: Int?,
-    val costDetailsPostage: String?
+    val costDetailsPostage: String?,
 ) : Serializable {
     companion object {
-        fun from(original: MessageResponse): MessageResponseFlat {
-            return MessageResponseFlat(
+        fun from(original: MessageResponse): MessageResponseFlat =
+            MessageResponseFlat(
                 id = original.id,
                 reference = original.reference,
                 emailAddress = original.emailAddress,
@@ -202,8 +201,7 @@ data class MessageResponseFlat(
                 costDetailsInternationalRateMultiplier = original.costDetails?.internationalRateMultiplier,
                 costDetailsSmsRate = original.costDetails?.smsRate,
                 costDetailsBillableSheetsOfPaper = original.costDetails?.billableSheetsOfPaper,
-                costDetailsPostage = original.costDetails?.postage
+                costDetailsPostage = original.costDetails?.postage,
             )
-        }
     }
 }

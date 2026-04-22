@@ -30,8 +30,5 @@ class NotifyNlPluginFactory(
     val client: NotifyNlClient,
     val tokenGenerationService: NotifyNlTokenGenerationService,
 ) : PluginFactory<NotifyNlPlugin>(pluginService) {
-
-    override fun create(): NotifyNlPlugin {
-        return NotifyNlPlugin(client, tokenGenerationService)
-    }
+    override fun create(): NotifyNlPlugin = NotifyNlPlugin(client, tokenGenerationService)
 }

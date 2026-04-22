@@ -29,17 +29,11 @@ import org.springframework.web.client.RestClient
 class NotifyNlAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean(NotifyNlClient::class)
-    fun notifyNlClient(
-        restClientBuilder: RestClient.Builder
-    ): NotifyNlClient {
-        return NotifyNlClient(restClientBuilder)
-    }
+    fun notifyNlClient(restClientBuilder: RestClient.Builder): NotifyNlClient = NotifyNlClient(restClientBuilder)
 
     @Bean
     @ConditionalOnMissingBean(NotifyNlTokenGenerationService::class)
-    fun notifyNlTokenGenerationService() : NotifyNlTokenGenerationService {
-        return NotifyNlTokenGenerationService()
-    }
+    fun notifyNlTokenGenerationService(): NotifyNlTokenGenerationService = NotifyNlTokenGenerationService()
 
     @Bean
     @ConditionalOnMissingBean(NotifyNlPluginFactory::class)
@@ -47,7 +41,5 @@ class NotifyNlAutoConfiguration {
         pluginService: PluginService,
         notifyNlClient: NotifyNlClient,
         tokenGenerationService: NotifyNlTokenGenerationService,
-    ): NotifyNlPluginFactory {
-        return NotifyNlPluginFactory(pluginService, notifyNlClient, tokenGenerationService)
-    }
+    ): NotifyNlPluginFactory = NotifyNlPluginFactory(pluginService, notifyNlClient, tokenGenerationService)
 }
